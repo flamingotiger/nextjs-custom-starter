@@ -1,6 +1,8 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": [ "@typescript-eslint" ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "extends": [
     "prettier",
     "airbnb",
@@ -9,5 +11,29 @@
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
-  ]
+  ],
+  "rules": {
+    "import/extensions": [
+      1,
+      {
+        ".js": "never",
+        ".jsx": "never",
+        ".ts": "never",
+        ".tsx": "never"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-function-return-type": 0
+  }
 }
