@@ -5,16 +5,32 @@ import { Provider } from 'react-redux';
 import GlobalStyles from '../src/common/styles/global-styles';
 import store from '../src/store';
 
-class ReactApp extends App<any> {
+class ReactApp extends App<any, any, any> {
+	constructor(props: any) {
+		super(props);
+		this.state = {
+			persist: false
+		};
+	}
+
+	public componentDidMount() {
+		this.setState({ persist: true });
+	}
+
 	public render() {
 		const { Component, pageProps } = this.props;
+		const { persist } = this.state;
 		return (
 			<>
 				<GlobalStyles />
 				<Provider store={store}>
-					<PersistGate loading={null} persistor={store.persistor}>
+					{persist ? (
+						<PersistGate loading={null} persistor={store.persistor}>
+							<Component {...pageProps} />
+						</PersistGate>
+					) : (
 						<Component {...pageProps} />
-					</PersistGate>
+					)}
 				</Provider>
 			</>
 		);
