@@ -30,7 +30,7 @@ export function* getFakeList() {
 export function* getFake() {
 	try {
 		const id = yield select(state => state.fake.params);
-		const item = yield call(FakeGetItemApi, id);
+		const item = yield call(FakeGetItemApi, id, {});
 		yield put({
 			type: FakeActionType.GET_FAKE_SUCCESS,
 			payload: { item }
