@@ -67,7 +67,7 @@ const Nav = () => {
 			<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', margin: '10px 0' }}>
 				<LoginButton onClick={() => alert('login')}>Login</LoginButton>
 			</div>
-			<div>
+			<div style={{border: '10px solid black'}}>
 				<img src="/background_logo.jpg" alt="nextjs custom starter" />
 			</div>
 			<Ul>

@@ -5,10 +5,12 @@ import Nav from '../src/components/nav';
 import { FakeActionType } from '../src/store/reducers/fake';
 import { RootState } from '../src/store/reducers';
 import { FakePostItem } from '../src/api/types';
+import PostItem from '../src/components/PostItem';
 
 const Home: React.FC = () => {
 	const dispatch = useDispatch();
-	const postState = useSelector((state: RootState) => state.fake);
+	const postList = useSelector((state: RootState) => state.fake.list);
+
 	useEffect(() => {
 		dispatch({ type: FakeActionType.GET_FAKE_LIST_REQUEST });
 	}, [dispatch]);
@@ -20,15 +22,9 @@ const Home: React.FC = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Nav />
-			{postState.list.length >= 0 &&
-				postState.list.map((item: FakePostItem) => {
-					return (
-						<div key={item.id}>
-							<strong>{item.title}</strong>
-							<p>{item.body}</p>
-						</div>
-					);
-				})}
+			<div style={{ width: '800px', margin: 'auto' }}>
+				{postList.length >= 0 && postList.map((item: FakePostItem) => <PostItem key={item.id} item={item} />)}
+			</div>
 		</div>
 	);
 };
