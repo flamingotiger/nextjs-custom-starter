@@ -2,6 +2,32 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
+const LoginButton = styled.button`
+	color: #fdd835;
+	text-align: center;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 10px;
+	transition: color 0.3s;
+
+	&:active {
+		color: #fbc02d;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	a {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+`;
+
 const Button = styled.button`
 	background-color: #fdd835;
 	height: 50px;
@@ -38,6 +64,9 @@ const Ul = styled.ul`
 const Nav = () => {
 	return (
 		<nav style={{ width: '800px', margin: 'auto' }}>
+			<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', margin: '10px 0' }}>
+				<LoginButton onClick={() => alert('login')}>Login</LoginButton>
+			</div>
 			<div>
 				<img src="/background_logo.jpg" alt="nextjs custom starter" />
 			</div>

@@ -4,3 +4,10 @@ export interface FakePostItem {
 	title: string;
 	body: string;
 }
+
+export interface FakeUser {
+	email: string;
+	id: string;
+	name: string;
+	admin: boolean;
+}
