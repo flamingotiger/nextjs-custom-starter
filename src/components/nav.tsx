@@ -3,20 +3,17 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 const LoginButton = styled.button`
-	color: #fdd835;
+	color: #ffffff;
 	text-align: center;
 	line-height: 30px;
 	font-size: 18px;
 	font-weight: bold;
 	margin: 0 10px;
-	transition: color 0.3s;
+	transition: background-color 0.3s;
+	border-radius: 5px;
 
 	&:active {
-		color: #fbc02d;
-	}
-
-	&:hover {
-		text-decoration: underline;
+		background-color: #fbc02d;
 	}
 
 	a {
@@ -67,7 +64,7 @@ const Nav = () => {
 			<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', margin: '10px 0' }}>
 				<LoginButton onClick={() => alert('login')}>Login</LoginButton>
 			</div>
-			<div style={{border: '10px solid black'}}>
+			<div style={{ border: '10px solid black' }}>
 				<img src="/background_logo.jpg" alt="nextjs custom starter" />
 			</div>
 			<Ul>
