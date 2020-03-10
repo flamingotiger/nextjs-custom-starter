@@ -23,7 +23,7 @@ export default class MyDocument extends Document<Props> {
 					<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 					{this.props.styleTags}
 				</Head>
-				<body>
+				<body style={{backgroundColor: '#fdd835'}}>
 					<Main />
 					<NextScript />
 				</body>

@@ -6,6 +6,7 @@ export interface FakePostItem {
 }
 
 export interface FakeUser {
+	image: string;
 	email: string;
 	id: string;
 	name: string;
