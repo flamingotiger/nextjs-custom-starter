@@ -1,6 +1,5 @@
 import App from 'next/app';
 import React from 'react';
-// import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import GlobalStyles from '../src/common/styles/global-styles';
@@ -13,14 +12,12 @@ class ReactApp extends App<any> {
 	}
 
 	public render() {
-		const { Component, pageProps } = this.props;
+		const { Component, pageProps, store } = this.props;
 		return (
 			<>
 				<GlobalStyles />
 				<Provider store={store}>
-					{/* <PersistGate loading={null} persistor={store.persistor}> */}
 					<Component {...pageProps} />
-					{/* </PersistGate> */}
 				</Provider>
 			</>
 		);

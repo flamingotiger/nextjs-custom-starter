@@ -1,8 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../src/store/reducers';
+import { FakeUserActionType } from '../../src/store/reducers/fakeUser';
+import { FakeUserApi } from '../../src/api/fakeUser';
+import faker from 'faker';
 
-const LoginButton = styled.button`
+const LoginButton = styled.div`
 	color: #ffffff;
 	text-align: center;
 	line-height: 30px;
@@ -59,10 +64,28 @@ const Ul = styled.ul`
 `;
 
 const Nav = () => {
+	const user = useSelector((state: RootState) => state.fakeUser.user);
+	const dispatch = useDispatch();
+	const login = async () => {
+		const userData = await FakeUserApi;
+		dispatch({ type: FakeUserActionType.LOGIN_USER, payload: { user: userData } });
+	};
+	const logout = () => {
+		dispatch({ type: FakeUserActionType.LOGOUT_USER });
+	};
 	return (
 		<nav style={{ width: '800px', margin: 'auto' }}>
 			<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', margin: '10px 0' }}>
-				<LoginButton onClick={() => alert('login')}>Login</LoginButton>
+				<LoginButton onClick={user ? () => logout() : () => login()}>
+					{user ? (
+						<div>
+							<img src={faker.image.avatar()} alt={user.name} />
+							<p>{user.name}</p>
+						</div>
+					) : (
+						'Login'
+					)}
+				</LoginButton>
 			</div>
 			<div style={{ border: '10px solid black' }}>
 				<img src="/background_logo.jpg" alt="nextjs custom starter" />

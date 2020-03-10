@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { action as actions, ActionType, createReducer } from 'typesafe-actions';
-import { FakePostItem } from 'src/api/types';
+import { FakePostItem } from 'api/types';
 
 enum FakeActionType {
 	GET_FAKE_LIST_REQUEST = 'GET_FAKE_LIST_REQUEST',
