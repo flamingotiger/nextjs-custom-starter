@@ -98,13 +98,6 @@ const Nav = () => {
 						</Link>
 					</Button>
 				</li>
-				<li>
-					<Button>
-						<Link href="/form">
-							<a href="/form">Form</a>
-						</Link>
-					</Button>
-				</li>
 			</Ul>
 		</nav>
 	);
