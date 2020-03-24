@@ -2,23 +2,13 @@ import axios from './index';
 import { FakePostItem } from './types';
 
 const endpoint = 'https://jsonplaceholder.typicode.com/posts';
+class FakeApi {
+	list = (params: any): Promise<FakePostItem[]> => axios.get(endpoint, { params });
+	get = (id: string, params: any): Promise<FakePostItem> => axios.get(endpoint + id, { params });
+	delete = (id: string): Promise<FakePostItem> => axios.delete(endpoint + id);
+	update = (id: string, body: FakePostItem, params: any): Promise<FakePostItem> =>
+		axios.put(endpoint + id, body, { params });
+	add = (body: FakePostItem): Promise<FakePostItem> => axios.post(endpoint, body);
+}
 
-export const FakeGetListApi = (params): Promise<FakePostItem[]> => {
-	return axios.get(endpoint, { params });
-};
-
-export const FakeGetItemApi = (id, params): Promise<FakePostItem> => {
-	return axios.get(endpoint + id, { params });
-};
-
-export const FakeDeleteItemApi = (id): Promise<FakePostItem> => {
-	return axios.delete(endpoint + id);
-};
-
-export const FakeUpdateItemApi = (id, params, body): Promise<FakePostItem> => {
-	return axios.put(endpoint + id, body, { params });
-};
-
-export const FakeAddItemApi = (body): Promise<FakePostItem> => {
-	return axios.post(endpoint, body);
-};
+export default FakeApi;

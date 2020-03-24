@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
-import { FakeGetListApi, FakeGetItemApi } from '../../api/fake';
+import FakeApi from '../../api/fake';
 import { FakeActionType } from '../reducers/fake';
 
 /**
@@ -9,7 +9,7 @@ import { FakeActionType } from '../reducers/fake';
  */
 export function* getFakeList() {
 	try {
-		const list = yield call(FakeGetListApi, { _page: 1, _limit: 20 });
+		const list = yield call(new FakeApi().list, { _page: 1, _limit: 20 });
 		yield put({
 			type: FakeActionType.GET_FAKE_LIST_SUCCESS,
 			payload: { list }
@@ -30,7 +30,7 @@ export function* getFakeList() {
 export function* getFake() {
 	try {
 		const id = yield select(state => state.fake.params);
-		const item = yield call(FakeGetItemApi, id, {});
+		const item = yield call(new FakeApi().get, id, {});
 		yield put({
 			type: FakeActionType.GET_FAKE_SUCCESS,
 			payload: { item }

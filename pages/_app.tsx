@@ -3,10 +3,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import GlobalStyles from '../src/common/styles/global-styles';
+import { ThemeProvider } from '../src/common/styles/themed-components';
+import theme from '../src/common/styles/theme';
 import store from '../src/store';
 
 class ReactApp extends App<any> {
-	static async getInitialProps({ Component, ctx }) {
+	static async getInitialProps({ Component, ctx }: any) {
 		const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 		return { pageProps };
 	}
@@ -16,9 +18,11 @@ class ReactApp extends App<any> {
 		return (
 			<>
 				<GlobalStyles />
-				<Provider store={store}>
-					<Component {...pageProps} />
-				</Provider>
+				<ThemeProvider theme={theme}>
+					<Provider store={store}>
+						<Component {...pageProps} />
+					</Provider>
+				</ThemeProvider>
 			</>
 		);
 	}
