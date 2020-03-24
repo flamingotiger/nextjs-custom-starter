@@ -1,7 +1,8 @@
 import axios from './index';
 import { FakePostItem } from './types';
 
-const endpoint = 'https://jsonplaceholder.typicode.com/posts';
+const endpoint = process.env.FAKE_URL || '';
+
 class FakeApi {
 	list = (params: any): Promise<FakePostItem[]> => axios.get(endpoint, { params });
 	get = (id: string, params: any): Promise<FakePostItem> => axios.get(endpoint + id, { params });
