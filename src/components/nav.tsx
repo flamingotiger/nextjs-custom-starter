@@ -6,7 +6,7 @@ import { RootState } from '../../src/store/reducers';
 import { FakeUserActionType } from '../../src/store/reducers/fakeUser';
 import { FakeUserApi } from '../../src/api/fakeUser';
 import faker from 'faker';
-import { withTranslation, useTranslation } from '../i18n';
+import { useTranslation } from '../i18n';
 
 const LoginButton = styled.div`
 	color: #ffffff;
@@ -34,7 +34,7 @@ const LoginButton = styled.div`
 const Button = styled.button`
 	background-color: #fdd835;
 	height: 50px;
-	width: 180px;
+	min-width: 180px;
 	text-align: center;
 	line-height: 30px;
 	font-size: 20px;
@@ -66,7 +66,6 @@ const Ul = styled.ul`
 
 const Nav = () => {
 	const { t, i18n } = useTranslation();
-
 	const user = useSelector((state: RootState) => state.fakeUser.user);
 	const dispatch = useDispatch();
 	const login = async () => {
@@ -76,10 +75,8 @@ const Nav = () => {
 	const logout = () => {
 		dispatch({ type: FakeUserActionType.LOGOUT_USER });
 	};
-	console.log(t('appName'))
 	return (
 		<nav style={{ width: '800px', margin: 'auto' }}>
-			<div onClick={() => i18n.changeLanguage('ko')}>{t('lang')}</div>
 			<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', margin: '10px 0' }}>
 				<LoginButton onClick={user ? () => logout() : () => login()}>
 					{user ? (
@@ -102,10 +99,13 @@ const Nav = () => {
 							<a href="/">List</a>
 						</Link>
 					</Button>
+					<Button onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ko' : 'en')}>
+						{t('change-language')}
+					</Button>
 				</li>
 			</Ul>
 		</nav>
 	);
 };
 
-export default withTranslation('common')(Nav);
+export default Nav;

@@ -1,5 +1,6 @@
 {
     "appName": "넥스트 커스텀 스타터",
     "title": "한글 제목",
-    "lang": "KO"
+    "lang": "KO",
+    "change-language": "언어 변경"
 }

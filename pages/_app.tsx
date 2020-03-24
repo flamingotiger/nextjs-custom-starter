@@ -38,4 +38,4 @@ class ReactApp extends App<any> {
 	}
 }
 
-export default withRedux(() => store, { debug: process.env.NODE_ENV === 'development' })(appWithTranslation(ReactApp));
+export default withRedux(() => store, { debug: false })(appWithTranslation(ReactApp));

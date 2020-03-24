@@ -4349,6 +4349,13 @@ i18next-express-middleware@^1.5.0:
   dependencies:
     cookies "0.7.1"
 
+i18next-icu@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/i18next-icu/-/i18next-icu-1.3.0.tgz#ce208becc0f416e58bb964e95934b230d5b35cb8"
+  integrity sha512-Jx+Vi7IJWZ4mtvSdBT6jCHqia9JZnfF477dUw6tHG86cG5mZhBJJdlQW5VzEYgjsCc5xHrqn+LTr+3N5h5xdpQ==
+  dependencies:
+    intl-messageformat "2.2.0"
+
 i18next-node-fs-backend@^2.1.0:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/i18next-node-fs-backend/-/i18next-node-fs-backend-2.1.3.tgz#483fa9eda4c152d62a3a55bcae2a5727ba887559"
@@ -4542,6 +4549,18 @@ internal-slot@^1.0.2:
     es-abstract "^1.17.0-next.1"
     has "^1.0.3"
     side-channel "^1.0.2"
+
+intl-messageformat-parser@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-1.4.0.tgz#b43d45a97468cadbe44331d74bb1e8dea44fc075"
+  integrity sha1-tD1FqXRoytvkQzHXS7Ho3qRPwHU=
+
+intl-messageformat@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-2.2.0.tgz#345bcd46de630b7683330c2e52177ff5eab484fc"
+  integrity sha1-NFvNRt5jC3aDMwwuUhd/9eq0hPw=
+  dependencies:
+    intl-messageformat-parser "1.4.0"
 
 invariant@^2.2.2:
   version "2.2.4"
