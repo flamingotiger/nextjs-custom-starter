@@ -6,12 +6,11 @@
     "dev": "nodemon --exec ts-node --project tsconfig.server.json server",
     "build": "next build && tsc --project tsconfig.server.json",
     "start": "NODE_ENV=production node .build/server",
-    "lint:css": "stylelint './src/**/*.{ts,tsx,js,jsx}'",
     "validate": "yarn run prettier:check && yarn run lint:fix && yarn run lint:eslint",
-    "prettier:check": "prettier --write --config ./.prettierrc './src/**/*.{ts,tsx}'",
-    "lint:eslint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
-    "lint:style": "stylelint './src/**/*.{ts,tsx}'"
+    "prettier:check": "prettier --write --config ./.prettierrc './{src,pages}/**/*.{ts,tsx}'",
+    "lint:eslint": "eslint './{src,pages}/**/*.{ts,tsx}'",
+    "lint:fix": "eslint --fix './{src,pages}/**/*.{ts,tsx}'",
+    "lint:style": "stylelint './{src,pages}/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -27,6 +26,7 @@
     "next-redux-wrapper": "^5.0.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "react-i18next": "^11.3.4",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",

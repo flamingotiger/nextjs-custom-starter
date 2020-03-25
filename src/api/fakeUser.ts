@@ -1,6 +1,6 @@
-import { FakeUser } from './types';
 import faker from 'faker';
 import * as uuid from 'uuid';
+import { FakeUser } from './types';
 
 export const FakeUserApi = new Promise(resolve => {
 	const user: FakeUser = {

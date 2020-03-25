@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FakePostItem } from '../api/types';
 import faker from 'faker';
+import { FakePostItem } from '../api/types';
 
 const Wrapper = styled.div`
 	background: white;
 	margin: 20px;
 	padding: 20px;
 	display: flex;
-    border-radius: 5px;
+	border-radius: 5px;
 `;
 
 const ImageWrapper = styled.div`
@@ -38,12 +38,13 @@ const P = styled.p`
 	font-size: 18px;
 	font-weight: lighter;
 `;
+
 const PostItem: React.FC<{ item: FakePostItem }> = ({ item }) => {
 	return (
 		<Wrapper>
 			<ImageWrapper>
 				<Image>
-					<img src={faker.image.avatar()} />
+					<img src={faker.image.avatar()} alt="thumb" />
 				</Image>
 			</ImageWrapper>
 			<Content>

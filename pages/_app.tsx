@@ -15,7 +15,7 @@ class ReactApp extends App<any> {
 	}
 
 	public render() {
-		const { Component, pageProps, store } = this.props;
+		const { Component, pageProps } = this.props;
 		return (
 			<>
 				<GlobalStyles />

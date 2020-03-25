@@ -17,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		padding: 0;
 		border: 0;
-		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
 	}
@@ -27,11 +26,7 @@ const GlobalStyle = createGlobalStyle`
 	footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
-	
-	body {
-		line-height: 1;
-	}
-	
+
 	ol, ul {
 		list-style: none;
 	}
@@ -55,10 +50,6 @@ const GlobalStyle = createGlobalStyle`
 		margin-top: -1px;
 	}
 	
-	a {
-		text-decoration: none;
-	}
-	
 	img {
 		display: block;
 		width: 100%;
@@ -71,52 +62,32 @@ const GlobalStyle = createGlobalStyle`
 		height: 100%;
 	}
 	
-	/* input 기본 스타일 초기화 */
 	input {
-		-webkit-appearance: none;
-		-moz-appearance: none;
 		appearance: none;
 		outline: none;
 	}
 	
 	input, button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-  }
+		background-color: transparent;
+		border: none;
+		outline: none;
+ 	}
   
 	* {
-		-webkit-appearance: none;
-		-moz-appearance: none;
 		appearance: none;
 		outline: none;
 		box-sizing: border-box;
 	}
-	
-  body{
-    font-family: "Nanum Gothic",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  button {
-    cursor: pointer;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    body {
-      font-size: 12px;
-    }
-  }
 
-  @media only screen and (max-width: 576px) {
-    body {
-      font-size: 10px;
-    }
-  }
+	body{
+		line-height: 1;
+		font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+	}
+  
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 `;
 
 export default GlobalStyle;
