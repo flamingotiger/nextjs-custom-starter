@@ -6,10 +6,12 @@
     "dev": "nodemon --exec ts-node --project tsconfig.server.json server",
     "build": "next build && tsc --project tsconfig.server.json",
     "start": "NODE_ENV=production node .build/server",
-    "lint:eslint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
-    "lint:fix": "eslint --fix 'src/**/*.{ts,tsx,js,jsx}'",
-    "prettier:check": "prettier --write --config ./.prettierrc 'src/**/*.{ts,tsx}'",
-    "lint:css": "stylelint './src/**/*.{ts,tsx,js,jsx}'"
+    "lint:css": "stylelint './src/**/*.{ts,tsx,js,jsx}'",
+    "validate": "yarn run prettier:check && yarn run lint:fix && yarn run lint:eslint",
+    "prettier:check": "prettier --write --config ./.prettierrc './src/**/*.{ts,tsx}'",
+    "lint:eslint": "eslint './src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'",
+    "lint:style": "stylelint './src/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
