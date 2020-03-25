@@ -6,7 +6,7 @@ import { FakeActionType } from '../src/store/reducers/fake';
 import { RootState } from '../src/store/reducers';
 import { FakePostItem } from '../src/api/types';
 import PostItem from '../src/components/PostItem';
-import { I18nPage, withTranslation } from '../src/i18n';
+import { I18nPage, includeDefaultNamespaces } from '../src/i18n';
 
 const Home: I18nPage = () => {
 	const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const Home: I18nPage = () => {
 };
 
 Home.getInitialProps = async () => ({
-	namespacesRequired: ['common']
+	namespacesRequired: includeDefaultNamespaces(['common', 'home'])
 });
 
-export default withTranslation('common')(Home);
+export default Home;

@@ -26,6 +26,9 @@ export const { appWithTranslation, withTranslation } = NextI18NextInstance;
 
 export default NextI18NextInstance;
 
+export const includeDefaultNamespaces = (namespaces: string[]) =>
+  ["common", "_error"].concat(namespaces);
+
 export const Trans = NextI18NextInstance.Trans;
 export const useTranslation = originalUseTranslation;
 export type I18nPage<P = {}> = NextComponentType<

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { I18nPage, withTranslation } from '../src/i18n';
+import { I18nPage, includeDefaultNamespaces } from '../src/i18n';
 
 const Error = {
 	Wrapper: styled.div`
@@ -51,7 +51,7 @@ const Custom404: I18nPage = () => {
 };
 
 Custom404.getInitialProps = async () => ({
-	namespacesRequired: ['common']
+	namespacesRequired: includeDefaultNamespaces([])
 });
 
-export default withTranslation('common')(Custom404);
+export default Custom404;
