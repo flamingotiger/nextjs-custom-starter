@@ -1,6 +1,8 @@
-const color = {
-	keyColor: '#000000',
-	subColor: '#111111'
+const colors = {
+	mainColor: '#000000',
+	subColor: '#111111',
 };
 
-export { color };
+const fontSizes: { [key: string]: string } = {};
+
+export { colors, fontSizes };
