@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { I18nPage, includeDefaultNamespaces } from '../src/i18n';
 
 const Error = {
 	Wrapper: styled.div`
@@ -35,7 +36,7 @@ const Error = {
 	`
 };
 
-const Custom404: React.FC = () => {
+const Custom404: I18nPage = () => {
 	return (
 		<Error.Wrapper>
 			<div>
@@ -48,5 +49,9 @@ const Custom404: React.FC = () => {
 		</Error.Wrapper>
 	);
 };
+
+Custom404.getInitialProps = async () => ({
+	namespacesRequired: includeDefaultNamespaces([])
+});
 
 export default Custom404;

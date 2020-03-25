@@ -6,6 +6,7 @@ import GlobalStyles from '../src/common/styles/global-styles';
 import { ThemeProvider } from '../src/common/styles/themed-components';
 import theme from '../src/common/styles/theme';
 import store from '../src/store';
+import { appWithTranslation } from '../src/i18n';
 
 class ReactApp extends App<any> {
 	static async getInitialProps({ Component, ctx }: any) {
@@ -28,4 +29,4 @@ class ReactApp extends App<any> {
 	}
 }
 
-export default withRedux(() => store, { debug: process.env.NODE_ENV === 'development' })(ReactApp);
+export default withRedux(() => store, { debug: false })(appWithTranslation(ReactApp));

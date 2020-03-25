@@ -9,6 +9,7 @@ module.exports = withCSS({
 	target: 'serverless',
 	env: {
 		BACKEND_URL: process.env.BACKEND_URL,
-		FAKE_URL: process.env.FAKE_URL
+		FAKE_URL: process.env.FAKE_URL,
+		PORT: process.env.PORT
 	}
 });
