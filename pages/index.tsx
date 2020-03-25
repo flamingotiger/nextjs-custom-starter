@@ -6,8 +6,9 @@ import { FakeActionType } from '../src/store/reducers/fake';
 import { RootState } from '../src/store/reducers';
 import { FakePostItem } from '../src/api/types';
 import PostItem from '../src/components/PostItem';
+import { I18nPage, withTranslation } from '../src/i18n';
 
-const Home: React.FC = () => {
+const Home: I18nPage = () => {
 	const dispatch = useDispatch();
 	const postList = useSelector((state: RootState) => state.fake.list);
 
@@ -29,4 +30,8 @@ const Home: React.FC = () => {
 	);
 };
 
-export default Home;
+Home.getInitialProps = async () => ({
+	namespacesRequired: ['common']
+});
+
+export default withTranslation('common')(Home);

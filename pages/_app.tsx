@@ -9,17 +9,8 @@ import store from '../src/store';
 import { appWithTranslation } from '../src/i18n';
 
 class ReactApp extends App<any> {
-	// static async getInitialProps({ Component, ctx }: any) {
-	// 	const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-	// 	return { pageProps };
-	// }
 	static async getInitialProps({ Component, ctx }: any) {
-		let pageProps = {};
-
-		if (Component.getInitialProps) {
-			pageProps = await Component.getInitialProps({ ctx });
-		}
-
+		const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 		return { pageProps };
 	}
 

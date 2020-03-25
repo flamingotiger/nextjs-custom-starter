@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { I18nPage, withTranslation } from '../src/i18n';
 
 const Error = {
 	Wrapper: styled.div`
@@ -35,7 +36,7 @@ const Error = {
 	`
 };
 
-const Custom404: React.FC = () => {
+const Custom404: I18nPage = () => {
 	return (
 		<Error.Wrapper>
 			<div>
@@ -49,4 +50,8 @@ const Custom404: React.FC = () => {
 	);
 };
 
-export default Custom404;
+Custom404.getInitialProps = async () => ({
+	namespacesRequired: ['common']
+});
+
+export default withTranslation('common')(Custom404);
