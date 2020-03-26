@@ -1,12 +1,10 @@
 import createMockStore, { MockStore } from 'redux-mock-store';
-import store from '../store/index';
 import * as ReactRedux from 'react-redux';
+import store from '../store/index';
 
 const mockStore = createMockStore([]);
-const makeMockStore = (state = store.getState() || {}): MockStore<unknown> & { dispatch: {} } => {
-	const store = mockStore({ ...state });
-	return store;
-};
+const makeMockStore = (state = store.getState() || {}): MockStore<unknown> & { dispatch: {} } =>
+	mockStore({ ...state });
 
 export const mockUseReactRedux = () => {
 	/* mocking useSelector on our mock store */

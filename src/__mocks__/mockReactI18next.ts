@@ -30,25 +30,26 @@ const renderNodes = (reactNodes: any) => {
 	});
 };
 
-const useMock: any = [(k: any) => k, {}];
-useMock.t = (k: any) => k;
+const useMock: any = [(k: string) => k, {}];
+useMock.t = (k: string) => k;
 useMock.i18n = {};
 
-const I18nextProvider = reactI18next.I18nextProvider;
-const initReactI18next = reactI18next.initReactI18next;
-const setDefaults = reactI18next.setDefaults;
-const getDefaults = reactI18next.getDefaults;
-const setI18n = reactI18next.setI18n;
-const getI18n = reactI18next.getI18n;
+const { I18nextProvider } = reactI18next;
+const { initReactI18next } = reactI18next;
+const { setDefaults } = reactI18next;
+const { getDefaults } = reactI18next;
+const { setI18n } = reactI18next;
+const { getI18n } = reactI18next;
 
 module.exports = {
 	// this mock makes sure any components using the translate HoC receive the t function as a prop
 	withTranslation: jest.fn().mockImplementation(() => (Component: React.FC | React.ComponentClass) => {
-		Component.defaultProps = { ...Component.defaultProps, t: () => '' };
-		return Component;
+		const ComponentCopy = { ...Component };
+		ComponentCopy.defaultProps = { ...Component.defaultProps, t: () => '' };
+		return ComponentCopy;
 	}),
-	Trans: ({ children }: any) => renderNodes(children),
-	Translation: ({ children }: any) => children((k: any) => k, { i18n: {} }),
+	Trans: ({ children }: { children: React.ReactNode }) => renderNodes(children),
+	Translation: ({ children }: any) => children((k: string) => k, { i18n: {} }),
 	useTranslation: () => useMock,
 
 	// mock if needed
@@ -59,7 +60,3 @@ module.exports = {
 	setI18n,
 	getI18n
 };
-// const react_i18next = jest.genMockFromModule('react-i18next');
-// const translate = () => Component => props => <Component t={() => ''} {...props} />;
-// react_i18next.translate = translate;
-// module.exports = react_i18next;
