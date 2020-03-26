@@ -75,13 +75,14 @@ const Nav = () => {
 	const logout = () => {
 		dispatch({ type: FakeUserActionType.LOGOUT_USER });
 	};
+	const image = process.env.NODE_ENV === 'test' ? 'image' : faker.image.avatar();
 	return (
 		<nav style={{ width: '800px', margin: 'auto' }}>
 			<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', margin: '10px 0' }}>
 				<LoginButton onClick={user ? () => logout() : () => login()}>
 					{user ? (
 						<div>
-							<img src={faker.image.avatar()} alt={user.name} />
+							<img src={image} alt={user.name} />
 							<p>{user.name}</p>
 						</div>
 					) : (
