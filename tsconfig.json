@@ -41,6 +41,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/404.tsx"
+    "pages/404.tsx", "jest.config.js"
   ]
 }

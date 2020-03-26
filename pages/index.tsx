@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
-import Nav from '../src/components/nav';
+import Nav from '../src/components/Nav';
 import { FakeActionType } from '../src/store/reducers/fake';
 import { RootState } from '../src/store/reducers';
 import { FakePostItem } from '../src/api/types';

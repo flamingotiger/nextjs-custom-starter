@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Nav/> match snapshot 1`] = `
+<Nav>
+  <nav
+    style={
+      Object {
+        "margin": "auto",
+        "width": "800px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "justifyContent": "flex-end",
+          "margin": "10px 0",
+        }
+      }
+    >
+      <styled.div
+        onClick={[Function]}
+      >
+        <div
+          className="sc-AxjAm kbnuyA"
+          onClick={[Function]}
+        >
+          <div>
+            <img
+              src="https://s3.amazonaws.com/uifaces/faces/twitter/stalewine/128.jpg"
+            />
+            <p />
+          </div>
+        </div>
+      </styled.div>
+    </div>
+    <div
+      style={
+        Object {
+          "border": "10px solid black",
+        }
+      }
+    >
+      <img
+        alt="nextjs custom starter"
+        src="/background_logo.jpg"
+      />
+    </div>
+    <styled.ul>
+      <ul
+        className="sc-AxiKw jEmOor"
+      >
+        <li>
+          <styled.button>
+            <button
+              className="sc-AxirZ cicziH"
+            >
+              <Link
+                href="/"
+              >
+                <a
+                  href="/"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  List
+                </a>
+              </Link>
+            </button>
+          </styled.button>
+          <styled.button
+            onClick={[Function]}
+          >
+            <button
+              className="sc-AxirZ cicziH"
+              onClick={[Function]}
+            >
+              change-language
+            </button>
+          </styled.button>
+        </li>
+      </ul>
+    </styled.ul>
+  </nav>
+</Nav>
+`;

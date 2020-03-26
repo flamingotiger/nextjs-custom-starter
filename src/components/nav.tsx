@@ -3,9 +3,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import faker from 'faker';
-import { RootState } from '../../src/store/reducers';
-import { FakeUserActionType } from '../../src/store/reducers/fakeUser';
-import { FakeUserApi } from '../../src/api/fakeUser';
+import { RootState } from '../store/reducers';
+import { FakeUserActionType } from '../store/reducers/fakeUser';
+import { FakeUserApi } from '../api/fakeUser';
 import { useTranslation } from '../i18n';
 
 const LoginButton = styled.div`
