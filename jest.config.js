@@ -17,6 +17,6 @@ module.exports = {
 		}
 	},
 	moduleNameMapper: {
-		'react-i18next': '<rootDir>/src/__mocks__/mockReactI18next.ts',
+		'react-i18next': '<rootDir>/src/__mocks__/mockReactI18next.ts'
 	}
 };
