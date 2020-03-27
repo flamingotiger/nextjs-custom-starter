@@ -51,7 +51,7 @@ const Custom404: I18nPage = () => {
 };
 
 Custom404.getInitialProps = async () => ({
-	namespacesRequired: includeDefaultNamespaces([])
+	namespacesRequired: includeDefaultNamespaces(['error'])
 });
 
 export default Custom404;

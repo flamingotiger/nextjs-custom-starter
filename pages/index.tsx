@@ -31,7 +31,7 @@ const Home: I18nPage = () => {
 };
 
 Home.getInitialProps = async () => ({
-	namespacesRequired: includeDefaultNamespaces(['common', 'home'])
+	namespacesRequired: includeDefaultNamespaces(['home'])
 });
 
 export default Home;
