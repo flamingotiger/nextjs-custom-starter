@@ -8,7 +8,6 @@ module.exports = withOptimizedImages({
 	typescript: {
 		ignoreDevErrors: true
 	},
-	distDir: './dist',
 	imagesName: '[hash].[ext]',
 	target: 'serverless',
 	env: {
@@ -26,4 +25,3 @@ module.exports = withOptimizedImages({
 		return config;
 	}
 });
-
