@@ -1,6 +1,8 @@
+/* eslint-disable no-param-reassign */
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const withOptimizedImages = require('next-optimized-images');
+const nodeExternals = require('webpack-node-externals');
 
 require('dotenv').config();
 
@@ -16,12 +18,12 @@ module.exports = withOptimizedImages({
 		PORT: process.env.PORT
 	},
 	webpack(config) {
-		// eslint-disable-next-line no-param-reassign
 		config.resolve.plugins = [
 			new TsconfigPathsPlugin({
 				configFile: path.resolve(__dirname, './tsconfig.json')
 			})
 		];
+		config.externals = nodeExternals();
 		return config;
 	}
 });
