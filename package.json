@@ -15,7 +15,6 @@
     "lint:style": "stylelint './{src,pages}/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
