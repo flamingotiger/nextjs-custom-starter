@@ -1,37 +1,48 @@
 import baseStyled, { css, CSSProp, ThemedStyledInterface } from 'styled-components';
 import { fontSizes, colors } from './variable';
+import { IndexKey } from '../../config/default';
 
-const sizes: { [key: string]: number } = {
-	mobile: 768,
-	tablet: 1080
+const sizes: IndexKey<number> = {
+	desktop: 1080,
+	tablet: 768,
+	mobile: 580
 };
 
 // Iterate through the sizes and create a media template
 type BackQuoteArgs = string[];
 
 interface Media {
-	mobile: (...args: BackQuoteArgs) => CSSProp | undefined;
+	desktop: (...args: BackQuoteArgs) => CSSProp | undefined;
 	tablet: (...args: BackQuoteArgs) => CSSProp | undefined;
+	mobile: (...args: BackQuoteArgs) => CSSProp | undefined;
 }
 
 const media: Media = {
-	mobile: () => undefined,
-	tablet: () => undefined
+	desktop: () => undefined,
+	tablet: () => undefined,
+	mobile: () => undefined
 };
 
-Object.keys(sizes).reduce((acc: Media, label: string) => {
-	const accCopy = { ...acc };
+Object.keys(sizes).reduce((acc: IndexKey<any>, label: string) => {
 	switch (label) {
-		case 'tablet':
-			accCopy.tablet = (...args: BackQuoteArgs): CSSProp =>
+		case 'desktop':
+			acc.desktop = (...args: BackQuoteArgs): CSSProp =>
 				css`
-					@media only screen and (max-width: ${sizes.desktop}px) and (min-width: ${sizes.tablet}px) {
+					@media only screen and (min-width: ${sizes.desktop + 1}px) {
+						${args}
+					}
+				`;
+			break;
+		case 'tablet':
+			acc.tablet = (...args: BackQuoteArgs): CSSProp =>
+				css`
+					@media only screen and (max-width: ${sizes.desktop}px) and (min-width: ${sizes.tablet + 1}px) {
 						${args}
 					}
 				`;
 			break;
 		case 'mobile':
-			accCopy.mobile = (...args: BackQuoteArgs): CSSProp =>
+			acc.mobile = (...args: BackQuoteArgs): CSSProp =>
 				css`
 					@media only screen and (max-width: ${sizes.tablet}px) {
 						${args}
@@ -41,7 +52,7 @@ Object.keys(sizes).reduce((acc: Media, label: string) => {
 		default:
 			break;
 	}
-	return accCopy;
+	return acc;
 }, media);
 
 const theme = {
