@@ -1,29 +1,38 @@
-/* eslint-disable no-param-reassign */
-const path = require('path');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants');
+const dotenv = require('dotenv');
 const withOptimizedImages = require('next-optimized-images');
-const nodeExternals = require('webpack-node-externals');
-
-require('dotenv').config();
-
-module.exports = withOptimizedImages({
-	typescript: {
-		ignoreDevErrors: true
-	},
-	imagesName: '[hash].[ext]',
-	target: 'serverless',
-	env: {
-		BACKEND_URL: process.env.BACKEND_URL,
-		FAKE_URL: process.env.FAKE_URL,
-		PORT: process.env.PORT
-	},
-	webpack(config) {
-		config.resolve.plugins = [
-			new TsconfigPathsPlugin({
-				configFile: path.resolve(__dirname, './tsconfig.json')
-			})
-		];
-		config.externals = nodeExternals();
-		return config;
-	}
+const withOffline = require('next-offline');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+	enabled: process.env.ANALYZE === 'true'
 });
+
+dotenv.config();
+
+const { BACKEND_BASE_URL } = process.env;
+
+const nextConfig = phase => {
+	const isDev = phase === PHASE_DEVELOPMENT_SERVER;
+	const isProd = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING !== '1';
+	const isStaging = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING === '1';
+
+	const env = {
+		BACKEND_BASE_URL: (() => {
+			if (isDev || isProd || isStaging) return BACKEND_BASE_URL;
+			return 'BACKEND_BASE_URL:not (isDev,isProd && !isStaging,isProd && isStaging)';
+		})()
+	};
+	return {
+		typescript: {
+			ignoreDevErrors: true
+		},
+		target: 'serverless',
+		env,
+		webpack(config, { webpack }) {
+			config.resolve.modules.push(__dirname);
+			config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
+			return config;
+		}
+	};
+};
+
+module.exports = phase => withOffline(withOptimizedImages(withBundleAnalyzer(nextConfig(phase))));

@@ -1,20 +1,20 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import next from 'next';
-import nextI18NextMiddleware from 'next-i18next/middleware';
-import nextI18next from '../src/i18n';
 
-const port = process.env.PORT || 3000;
-const app = next({ dev: process.env.NODE_ENV !== 'production' });
-const appHandler = app.getRequestHandler();
+const port = parseInt(process.env.PORT || '3000', 10);
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
 
-(async () => {
-	await app.prepare();
-	await nextI18next.initPromise;
+const handle = app.getRequestHandler();
+
+app.prepare().then(() => {
 	const server = express();
 
-	await server
-		.use(nextI18NextMiddleware(nextI18next))
-		.get('*', (req, res) => appHandler(req, res))
-		.listen(port);
-	console.log(`🚀 Ready on http://localhost:${port}`); // eslint-disable-line no-console
-})();
+	server.all('*', (req: Request, res: Response) => handle(req, res));
+
+	server.listen(port, (err: any) => {
+		if (err) throw err;
+		// tslint:disable-next-line:no-console
+		console.log(`🚀 Ready on http://localhost:${port} as ${dev ? 'development' : process.env.NODE_ENV}`);
+	});
+});

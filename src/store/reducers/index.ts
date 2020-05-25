@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
-import fake from './fake';
-import fakeUser from './fakeUser';
+import modal from './modal';
 
-const rootReducer = combineReducers({ fake, fakeUser });
+const rootReducer = combineReducers({ modal });
 
 export default rootReducer;
 

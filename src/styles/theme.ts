@@ -1,26 +1,26 @@
 import baseStyled, { css, CSSProp, ThemedStyledInterface } from 'styled-components';
-import { fontSizes, colors } from './variable';
-import { IndexKey } from '../../config/default';
+import { IndexKey } from 'src/config/default';
+import { color, layout } from './variable';
 
 const sizes: IndexKey<number> = {
-	desktop: 1080,
-	tablet: 768,
-	mobile: 580
+	desktop: 1079,
+	tablet: 767,
+	phone: 580
 };
 
-// Iterate through the sizes and create a media template
 type BackQuoteArgs = string[];
 
 interface Media {
 	desktop: (...args: BackQuoteArgs) => CSSProp | undefined;
 	tablet: (...args: BackQuoteArgs) => CSSProp | undefined;
-	mobile: (...args: BackQuoteArgs) => CSSProp | undefined;
+	phone: (...args: BackQuoteArgs) => CSSProp | undefined;
 }
 
+// Iterate through the sizes and create a media template
 const media: Media = {
 	desktop: () => undefined,
-	tablet: () => undefined,
-	mobile: () => undefined
+	phone: () => undefined,
+	tablet: () => undefined
 };
 
 Object.keys(sizes).reduce((acc: IndexKey<any>, label: string) => {
@@ -41,8 +41,8 @@ Object.keys(sizes).reduce((acc: IndexKey<any>, label: string) => {
 					}
 				`;
 			break;
-		case 'mobile':
-			acc.mobile = (...args: BackQuoteArgs): CSSProp =>
+		case 'phone':
+			acc.phone = (...args: BackQuoteArgs): CSSProp =>
 				css`
 					@media only screen and (max-width: ${sizes.tablet}px) {
 						${args}
@@ -56,8 +56,8 @@ Object.keys(sizes).reduce((acc: IndexKey<any>, label: string) => {
 }, media);
 
 const theme = {
-	colors,
-	fontSizes,
+	color,
+	layout,
 	media
 };
 
