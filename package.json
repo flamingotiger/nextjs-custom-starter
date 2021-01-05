@@ -19,7 +19,7 @@
 	},
 	"dependencies": {
 		"@next/bundle-analyzer": "^9.3.5",
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"babel-plugin-styled-components": "^1.10.6",
 		"cross-env": "^7.0.2",
 		"dotenv": "^8.2.0",
